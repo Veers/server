@@ -9,8 +9,12 @@ import java.util.*;
 public class Roster {
     private static HashMap<String, Client> roster;
 
-    public static void initalize() {
+    public Roster(){
         roster = new HashMap<String, Client>();
+    }
+
+    public static void initalize() {
+
     }
 
     public static void setPerson(String login, Client client) {

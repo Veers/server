@@ -9,6 +9,8 @@ import java.net.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class App {
+    private static Roster list = new Roster();
+    private static ChatHistory chatHistory = new ChatHistory();
 
     public App() {
         Printer.printLine("Welcome to Server side");
@@ -22,7 +24,7 @@ public class App {
         // create server socket
         try {
             Printer.printLine("Initialize Socket...");
-            servers = new ServerSocket(4444);
+            servers = new ServerSocket(Config.PORT);
         } catch (IOException e) {
             Printer.printLine("Couldn't listen to port 4444");
             System.exit(-1);
@@ -41,5 +43,13 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         new App();
+    }
+
+    public synchronized static Roster getUserList() {
+        return list;
+    }
+
+    public synchronized static ChatHistory getChatHistory() {
+        return chatHistory;
     }
 }

@@ -8,6 +8,8 @@ public class Message implements Serializable {
     private String toUser = "";
     private boolean isBroadCast = true;
 
+    private String[] users;
+
     public Message() {
 
     }
@@ -70,6 +72,14 @@ public class Message implements Serializable {
 
     public void setToUser(String toUser) {
         this.toUser = toUser;
+    }
+
+    public String[] getUsers() {
+        return users;
+    }
+
+    public void setUsers(String[] users) {
+        this.users = users;
     }
     //todo
 }

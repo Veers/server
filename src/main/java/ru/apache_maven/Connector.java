@@ -55,7 +55,7 @@ public class Connector extends Thread {
         Client client = new Client(this.socket);
         Roster.setPerson("user_" + String.valueOf(socket.getInetAddress()), client);
         Printer.printLine("-----> Set name: " + socket.getInetAddress().toString());
-
+        // todo
         try {
             Message msg;
             try {
