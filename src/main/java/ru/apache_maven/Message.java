@@ -3,6 +3,7 @@ package ru.apache_maven;
 import java.io.Serializable;
 
 public class Message implements Serializable {
+    private String login = "";
     private String command = "";
     private String text;
     private String toUser = "";
@@ -36,6 +37,14 @@ public class Message implements Serializable {
 
     public void setBroadCastMessage() {
         setBroadCast(true);
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public void setCommand(String str) {
@@ -81,5 +90,6 @@ public class Message implements Serializable {
     public void setUsers(String[] users) {
         this.users = users;
     }
+
     //todo
 }

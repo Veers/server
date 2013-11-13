@@ -10,6 +10,8 @@ public class Config {
 
     public static int PORT;
     public static int HISTORY_SIZE;
+    public static String HELLO_MESSAGE;
+    public static final int DELAY = 30000;
 
     static {
         Properties properties = new Properties();
@@ -21,6 +23,7 @@ public class Config {
 
             PORT = Integer.parseInt(properties.getProperty("PORT"));
             HISTORY_SIZE = Integer.parseInt(properties.getProperty("HISTORY_LENGTH"));
+            HELLO_MESSAGE = properties.getProperty("HELLO_MESSAGE");
         } catch (FileNotFoundException ex) {
             System.err.println("Properties config file not found");
         } catch (IOException ex) {

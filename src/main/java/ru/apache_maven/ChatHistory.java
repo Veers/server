@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatHistory implements Serializable {
-    private List<Message> history;
+    private static List<Message> history;
 
     public ChatHistory() {
-        this.history = new ArrayList<Message>(Config.HISTORY_SIZE);
+        history = new ArrayList<Message>(Config.HISTORY_SIZE);
     }
 
-    public void addMessage(Message message) {
-        if (this.history.size() > Config.HISTORY_SIZE) {
-            this.history.remove(0);
+    public static void addMessage(Message message) {
+        if (history.size() > Config.HISTORY_SIZE) {
+            history.remove(0);
         }
-        this.history.add(message);
+        history.add(message);
     }
 
-    public List<Message> getHistory() {
-        return this.history;
+    static List<Message> getHistory() {
+        return history;
     }
 
 
