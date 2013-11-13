@@ -31,7 +31,7 @@ public class Connector extends Thread {
     private int maxTimeout;
     private long lastReadTime;
 
-    private Message message;
+    protected Message message;
     private String login;
 
     private boolean flag = false;
