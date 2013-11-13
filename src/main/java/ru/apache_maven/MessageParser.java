@@ -1,13 +1,12 @@
 package ru.apache_maven;
 
-import ru.apache_maven.ru.apache_maven_static.Roster;
-
 import java.net.InetAddress;
 
 public class MessageParser {
-    private InetAddress address;
-    private String code;
-    private String data;
+    protected InetAddress address;
+    protected String toUser;
+    protected String code;
+    protected String data;
 
     public MessageParser() {
 
@@ -21,6 +20,8 @@ public class MessageParser {
         System.out.println(msg.getText());
         this.code = msg.getCommand();
         this.data = msg.getText();
+        if (!msg.isBroadCast())
+            this.toUser = msg.getToUser();
         /*if (this.code.length() != 0) {
             System.out.println("SYSMSG");
             if (this.code.equalsIgnoreCase(String.valueOf(CommonEnum.NAME)))

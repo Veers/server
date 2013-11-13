@@ -1,9 +1,13 @@
 package ru.apache_maven;
 
 import ru.apache_maven.ru.apache_maven_static.Printer;
+import ru.apache_maven.ru.apache_maven_static.Roster;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 public class TempSender {
     private static ObjectOutputStream objectOutputStream = null;
@@ -14,6 +18,7 @@ public class TempSender {
 
     public static void sendvia(Message msg) {
         Printer.printLine("Try to send back message...");
+        Printer.printLine("-----> SEND TO: " + msg.getToUser());
         Printer.printLine("-----> COMMAND: " + msg.getCommand());
         Printer.printLine("-----> TEXT: " + msg.getText());
         Printer.printLine("-----> ISBROADCAST: " + msg.isBroadCast());
@@ -26,6 +31,19 @@ public class TempSender {
         }
         Printer.printLine("Message send back!");
 
+    }
+
+    public static void sendTo(String to, Message msg){
+        InetSocketAddress address = Roster.getAddressByName(to);
+        try {
+            Socket socket = new Socket(address.getAddress(), address.getPort());
+            ObjectOutputStream oos = (ObjectOutputStream) socket.getOutputStream();
+            oos.writeObject(msg);
+            oos.flush();
+            oos.close();
+        } catch (IOException e) {
+            Printer.printLine("Error to initialize private socket in SenderClass...");
+        }
     }
 
     public static ObjectOutputStream getObjectOutputStream() {

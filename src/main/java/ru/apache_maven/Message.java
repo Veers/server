@@ -5,24 +5,31 @@ import java.io.Serializable;
 public class Message implements Serializable {
     private String command = "";
     private String text;
-    private boolean isBroadCast = false;
+    private String toUser = "";
+    private boolean isBroadCast = true;
 
     public Message() {
 
     }
 
     public Message(String text) {
-        this.text = text;
+        setText(text);
     }
 
-    public Message(String command, String data) {
-        this.command = command;
-        this.text = data;
+    public Message(String command, String text) {
+        setCommand(command);
+        setText(text);
     }
 
     public Message(String text, boolean broadcast) {
         setBroadCast(broadcast);
-        this.text = text;
+        setText(text);
+    }
+
+    public Message(String toUser, String command, String text){
+        setToUser(toUser);
+        setCommand(command);
+        setText(text);
     }
 
     public void setBroadCastMessage() {
@@ -55,6 +62,14 @@ public class Message implements Serializable {
 
     public void setBroadCast(boolean broadCast) {
         isBroadCast = broadCast;
+    }
+
+    public String getToUser() {
+        return toUser;
+    }
+
+    public void setToUser(String toUser) {
+        this.toUser = toUser;
     }
     //todo
 }
