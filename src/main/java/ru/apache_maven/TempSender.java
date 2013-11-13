@@ -34,7 +34,7 @@ public class TempSender {
     }
 
     public static void sendTo(String to, Message msg){
-        InetSocketAddress address = Roster.getAddressByName(to);
+        InetSocketAddress address = Roster.getAddressByLogin(to);
         try {
             Socket socket = new Socket(address.getAddress(), address.getPort());
             ObjectOutputStream oos = (ObjectOutputStream) socket.getOutputStream();

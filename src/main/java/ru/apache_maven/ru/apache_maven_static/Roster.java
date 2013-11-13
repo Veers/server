@@ -1,54 +1,63 @@
 package ru.apache_maven.ru.apache_maven_static;
 
-import ru.apache_maven.CommonEnum;
+import ru.apache_maven.Client;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.*;
 
 
 public class Roster {
-    private static HashMap<InetSocketAddress, String> roster;
+    private static HashMap<String, Client> roster;
 
     public static void initalize() {
-        roster = new HashMap<InetSocketAddress, String>();
+        roster = new HashMap<String, Client>();
     }
 
-    public static void setPerson(InetSocketAddress address, String name) {
-        roster.put(address, name);
+    public static void setPerson(String login, Client client) {
+        client.setLogin(login);
+        if (!roster.containsKey(login)) {
+            roster.put(login, client);
+        } else {
+            int i = 1;
+            while (roster.containsKey(login)) {
+                login = login + i;
+                i++;
+            }
+            client.setLogin(login);
+            roster.put(login, client);
+        }
     }
 
     public static void showAll() {
-        Collection<String> c = roster.values();
-        for (String type : c) System.out.println(type);
-
+        Collection<Client> c = roster.values();
+        for (Client type : c) System.out.println(type);
     }
 
-    public static void setName(InetSocketAddress key, String name) {
-        roster.put(key, name);
+    public static InetSocketAddress getAddressByLogin(String name) {
+        Client client = roster.get(name);
+        assert (client != null);
+        return client.getInetSocketAddress();
     }
 
-    public static String getNameByInetAddress(InetSocketAddress ia) {
-        String name = roster.get(ia);
-        if (name == null)
-            name = String.valueOf(CommonEnum.UNKNOWN_NAME);
-        return name;
+    public static String[] getUsers() {
+        Set<String> strings = roster.keySet();
+        return strings.toArray(new String[strings.size()]);
     }
 
-    public static boolean getUser(String name){
-        return roster.containsValue(String.valueOf(name));
-    }
+    public static ArrayList<Client> getClientsList() {
+        ArrayList<Client> clientsList = new ArrayList<Client>(roster.entrySet().size());
 
-    public static InetSocketAddress getAddressByName(String name){
-        if (getUser(name)){
-            for (Map.Entry<InetSocketAddress, String> entry : roster.entrySet()) {
-                InetSocketAddress key = entry.getKey();
-                String value = entry.getValue();
-                if (name.equalsIgnoreCase(value))
-                    return key;
-            }
+        String s = "";
+        for(Map.Entry<String, Client> m : roster.entrySet()){
+            clientsList.add(m.getValue());
+            System.out.println(m.getKey());
+            s = s + m.getKey();
         }
-        return null;
+        return clientsList;
+    }
+
+    public static void deletePerson(String login) {
+        roster.remove(login);
     }
     //todo
 

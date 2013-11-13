@@ -3,6 +3,7 @@ package ru.apache_maven;
 import ru.apache_maven.ru.apache_maven_static.Roster;
 import ru.apache_maven.ru.apache_maven_static.Printer;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.atomic.AtomicReference;

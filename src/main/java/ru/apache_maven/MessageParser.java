@@ -25,7 +25,7 @@ public class MessageParser {
         /*if (this.code.length() != 0) {
             System.out.println("SYSMSG");
             if (this.code.equalsIgnoreCase(String.valueOf(CommonEnum.NAME)))
-                Roster.setName(address, this.data);
+                Roster.setLogin(address, this.data);
             if (this.code.equalsIgnoreCase(String.valueOf(CommonEnum.ALL)))
                 System.out.println("ALL");
             if (this.code.equalsIgnoreCase(String.valueOf(CommonEnum.ATTACH)))

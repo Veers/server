@@ -10,8 +10,11 @@ import java.net.*;
 public class Connector extends Thread {
     MessageParser msgParser;
 
+    private InetSocketAddress clientInetSocketAddress;
+
     private SocketAddress clientAddress;
 
+    // final ????
     private ObjectInputStream ois;
     private ObjectOutputStream outputStream;
     private Socket socket;
@@ -31,9 +34,8 @@ public class Connector extends Thread {
         }
         Printer.printLine("Client connected");
         this.clientAddress = socket.getRemoteSocketAddress();
+        this.clientInetSocketAddress = new InetSocketAddress(socket.getInetAddress(), socket.getPort());
 
-        Roster.setPerson(socket.getInetAddress(), socket.getInetAddress().toString());
-        Printer.printLine("-----> Set name: " + socket.getInetAddress().toString());
         this.msgParser = new MessageParser(socket.getInetAddress());
 
         try {
@@ -50,6 +52,10 @@ public class Connector extends Thread {
     }
 
     public void run() {
+        Client client = new Client(this.socket);
+        Roster.setPerson("user_" + String.valueOf(socket.getInetAddress()), client);
+        Printer.printLine("-----> Set name: " + socket.getInetAddress().toString());
+
         try {
             Message msg;
             try {
@@ -72,7 +78,7 @@ public class Connector extends Thread {
             }
         } catch (SocketException se) {
             Printer.printLine(se.getMessage());
-            Printer.printLine("Client " + Roster.getNameByInetAddress(this.socket.getInetAddress()) + " disconnected");
+            Printer.printLine("Client " + client.getLogin() + " disconnected");
             Printer.printLine("EXIT...");
         } catch (IOException e) {
             e.printStackTrace();
