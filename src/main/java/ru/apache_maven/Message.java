@@ -29,8 +29,8 @@ public class Message implements Serializable {
         setText(text);
     }
 
-    public Message(String toUser, String command, String text){
-        setToUser(toUser);
+    public Message(String login, String command, String text){
+        setLogin(login);
         setCommand(command);
         setText(text);
     }

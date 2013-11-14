@@ -2,12 +2,54 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes />
+  <nodes>
+    <node x="-415.0" y="27.0">ru.apache_maven.ru.apache_maven_static.Roster</node>
+    <node x="-193.0" y="30.0">ru.apache_maven.MessageParser</node>
+    <node x="117.0" y="-87.0">ru.apache_maven.TempSender</node>
+    <node x="-328.0" y="-98.0">ru.apache_maven.Connector</node>
+    <node x="-295.0" y="30.0">ru.apache_maven.Client</node>
+    <node x="-408.0" y="-161.0">ru.apache_maven.App</node>
+    <node x="-34.0" y="-159.0">ru.apache_maven.ChatHistory</node>
+    <node x="-6.0" y="32.0">ru.apache_maven.ru.apache_maven_static.Printer</node>
+    <node x="-22.0" y="-28.0">ru.apache_maven.Message</node>
+    <node x="-21.0" y="137.0">ru.apache_maven.CommonEnum</node>
+    <node x="-1.0" y="80.0">ru.apache_maven.Config</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="ru.apache_maven.ru.apache_maven_static.Roster" target="ru.apache_maven.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.App" target="ru.apache_maven.Connector">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.ChatHistory" target="ru.apache_maven.Message">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.Connector" target="ru.apache_maven.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.App" target="ru.apache_maven.ChatHistory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.App" target="ru.apache_maven.ru.apache_maven_static.Roster">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.apache_maven.Connector" target="ru.apache_maven.MessageParser">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="-96.0" y="-1.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 

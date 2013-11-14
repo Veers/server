@@ -53,4 +53,18 @@ public class TempSender {
     public static void setObjectOutputStream(ObjectOutputStream objectOutputStream) {
         TempSender.objectOutputStream = objectOutputStream;
     }
+
+    public static boolean sendBroadCast(String login, String text){
+        Message m = new Message(text);
+        m.setLogin(login);
+        try{
+            objectOutputStream.writeObject(m);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            return true;
+        } catch (IOException ie){
+            ie.printStackTrace();
+            return false;
+        }
+    }
 }

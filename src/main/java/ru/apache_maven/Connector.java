@@ -1,6 +1,5 @@
 package ru.apache_maven;
 
-import ru.apache_maven.ChatHistory;
 import ru.apache_maven.ru.apache_maven_static.Roster;
 import ru.apache_maven.ru.apache_maven_static.Printer;
 
@@ -83,6 +82,7 @@ public class Connector extends Thread {
             this.message.setUsers(Roster.getUsers());
 
             //Broadcast Notification
+            TempSender.sendBroadCast(login, "User "+login+" online");
 
             //Запускаем таймер
             this.timer = new Timer(Config.DELAY, new ActionListener() {
@@ -154,7 +154,7 @@ public class Connector extends Thread {
         } catch (SocketException e) {
             System.out.println(login + " disconnected!");
             //todo broadcast notification
-            //this.broadcast(getUserList().getClientsList(), new Message("Server-Bot", "The user " + login + " has been disconnect", getUserList().getUsers()));
+            TempSender.sendBroadCast(login, "User "+login+" disconnected");
             this.timer.stop();
         } catch (IOException e) {
             e.printStackTrace();
