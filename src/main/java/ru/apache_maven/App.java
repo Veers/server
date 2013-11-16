@@ -2,9 +2,7 @@ package ru.apache_maven;
 
 import ru.apache_maven.ru.apache_maven_static.Roster;
 import ru.apache_maven.ru.apache_maven_static.Printer;
-import ru.apache_maven.ru.client.CoreClient;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -43,10 +41,7 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException {
-        // server
         new App();
-        // client
-        //new CoreClient();
     }
 
     public synchronized static Roster getUserList() {

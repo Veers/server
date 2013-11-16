@@ -22,5 +22,4 @@ public class ChatHistory implements Serializable {
         return history;
     }
 
-
 }
